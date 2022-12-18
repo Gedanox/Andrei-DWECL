@@ -1,0 +1,21 @@
+html, body {
+    height: 100%;
+    width: 100%;
+}
+
+.parrafoEditable {
+    width: 95%;
+    height: 10%;
+    background-color: cadetblue;
+    margin-bottom: 3%;
+    margin-top: 3%;
+}
+
+buttons {
+    margin-right: 0;
+}
+
+.hidden {
+    display: none;
+}
+

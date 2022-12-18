@@ -3,11 +3,11 @@ class dni{
         'E'];
     dniChecker(input){
         if (!(/([0-9]{8}[a-zA-Z])/.test(input) && (input.length === 9))) {
-            console.log("Incorrect input, please introduce a valid format");
+            console.log("Incorrect input, please introduce a valid format.");
         } else if ((input.replace(/[0-9]/g, '').toUpperCase() === this.letters[input.replace(/[a-zA-Z]/, '')%23])) {
-            console.log("Todo bien");
+            console.log("Everything is correct!");
         } else {
-            console.log("La letra no coincide con el numero, DNI Incorrecto.");
+            console.log("Letter and number doesn't match, your DNI is not correct.");
         }
     }
 }

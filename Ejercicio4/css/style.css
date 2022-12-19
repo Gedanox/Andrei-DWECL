@@ -1,0 +1,36 @@
+html, body {
+    height: 100%;
+    width: 100%;
+    display: inline-block;
+}
+
+.calcButton{
+    height:70px;
+    width: 70px;
+    margin: 2%;
+    background-color: cadetblue;
+    display: inline-block;
+    text-align: center;
+    line-height: 70px;
+}
+
+.calcScreen{
+    height: 70px;
+    width: 100%;
+    display: inline-block;
+}
+
+.calcResult{
+    height: 70px;
+    width: 500px;
+    background-color: darkkhaki;
+}
+
+.calcInput{
+    height: 63px;
+    width: 200px;
+}
+
+.calcInput, .calcScreen{
+    display: inline-block;
+}

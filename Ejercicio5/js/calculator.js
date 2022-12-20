@@ -1,24 +1,43 @@
 class Calculator{
+
+    calcscreen = null;
+    calcresult = null;
+    calcinput = null;
+    calcstring = null;
+    historyscreen = null;
+    calchistory = null;
+    temp = null;
+
     init(calcbuttons){
-        this.calcString = "";
+
+        this.calchistory = [];
+        this.calcstring = "";
         this.result = 0;
         this.new = false;
         this.reset = false;
         this.action = "add";
         this.first = true;
 
+        this.historyscreen = document.createElement("div");
+        this.historyscreen.classList.add("calchistory");
+
         this.calcscreen = document.createElement("div");
         this.calcscreen.classList.add("calcScreen");
+
         this.calcresult = document.createElement("div");
         this.calcresult.classList.add("calcResult");
+
         this.calcinput = document.createElement("textarea");
         this.calcinput.classList.add("calcInput");
+
         this.calcscreen.append(this.calcresult);
         this.calcscreen.append(this.calcinput);
+
         for (let calckey of calcbuttons){
             if (this.first){
-                this.first = false;
+                calckey.parentNode.insertBefore(this.historyscreen,calckey);
                 calckey.parentNode.insertBefore(this.calcscreen,calckey);
+                this.first = false;
             }
             this.addButtons(calckey);
         }
@@ -31,7 +50,11 @@ class Calculator{
                 this.reset = true;
             }
             if(this.reset){
-                this.clear();
+                this.historial();
+                if(this.reset){
+                    this.clear();
+                }
+                console.log(this.result);
             }
             this.makeCalc();
             this.writeCalc(calckey);
@@ -72,17 +95,30 @@ class Calculator{
                 this.new = true;
                 break;
         }
-        this.calcString = this.calcString + this.calcinput.value + operation;
+        this.calcstring = this.calcstring + this.calcinput.value + operation;
         if(type.id === "result"){
-            this.calcString = this.calcString + this.result;
+            this.calcstring = this.calcstring + this.result;
         }
-        this.calcresult.innerHTML = this.calcString;
+        this.calcresult.innerHTML = this.calcstring;
+    }
+
+    historial(){
+        let temp = document.createElement("p");
+        temp.classList.add("pastresult");
+        temp.innerHTML = this.calcstring;
+        temp.value = this.result;
+        temp.addEventListener("click", () => {
+            this.clear();
+            this.calcresult.innerHTML = temp.innerHTML;
+            this.result = temp.value;
+        });
+        this.historyscreen.append(temp);
     }
 
     clear(){
         this.reset = false;
         this.result = 0;
-        this.calcString = "";
+        this.calcstring = "";
         this.calcresult.innerHTML = "";
     }
 

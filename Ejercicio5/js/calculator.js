@@ -100,6 +100,7 @@ class Calculator{
             this.calcstring = this.calcstring + this.result;
         }
         this.calcresult.innerHTML = this.calcstring;
+        this.clearInput();
     }
 
     historial(){
@@ -110,7 +111,7 @@ class Calculator{
         temp.addEventListener("click", () => {
             this.clear();
             this.calcresult.innerHTML = temp.innerHTML;
-            this.result = temp.value;
+            this.calcinput.value = temp.value;
         });
         this.historyscreen.append(temp);
     }
@@ -120,6 +121,10 @@ class Calculator{
         this.result = 0;
         this.calcstring = "";
         this.calcresult.innerHTML = "";
+    }
+
+    clearInput(){
+        this.calcinput.value = "";
     }
 
 }
